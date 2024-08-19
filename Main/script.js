@@ -8,12 +8,12 @@ const historyList = document.getElementById('historyList');
 // Function to fetch and display weather data
 function fetchWeather(city) {
     // Fetch current weather
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city_search}&limit=5&appid=${apiKey}`)
         .then(response => response.json())
         .then(currentData => {
             if (currentData.cod === 200) {
                 // Fetch 5-day forecast
-                return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`)
+                return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${your_latitude}&lon=${your_longitude}&units=imperial&appid=${apiKey}`)
                     .then(response => response.json())
                     .then(forecastData => {
                         if (forecastData.cod === "200") {
